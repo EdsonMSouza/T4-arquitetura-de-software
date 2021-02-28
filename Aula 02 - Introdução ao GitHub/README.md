@@ -2,10 +2,7 @@
 
 *Slides* e vídeos de apoio sobre **GitHub**.
 
-## Vídeos de Apoio
-* [A Importância do GitHub](https://youtu.be/f1XdQnl0ltg)
-* [O que é GitHub](https://youtu.be/ZDo_f3ZibFA)
-* [GitHub | Guia Completo do Iniciante](https://youtu.be/UbJLOn1PAKw)
+## Vídeos de Apoio (Prof. Edson Melo de Souza, MSc)
 * [Como criar uma conta](https://youtu.be/aqErh3MlJsE)
 * [Conhecendo o ambiente](https://youtu.be/oK3cmTjY6nQ)
 * [Criando o primeiro repositório](https://youtu.be/uQPCFA2pSXc)
@@ -19,7 +16,12 @@
 * [Adicionando, atualizando e removendo arquivos do repositório](https://youtu.be/PoVbVCY8yrI)
 * [Clonando um repositório](https://youtu.be/wZBUPZLsQoE)
 
+## Outros Vídeos sobre o Assunto
+* [A Importância do GitHub](https://youtu.be/f1XdQnl0ltg)
+* [O que é GitHub](https://youtu.be/ZDo_f3ZibFA)
+* [GitHub | Guia Completo do Iniciante](https://youtu.be/UbJLOn1PAKw)
+
 ## Links de Apoio
-* [Overview Git e GitHub - School 3of Net (Free)](https://www.schoolofnet.com/curso/git/controle-de-versao/git-e-github/)
+* [Overview Git e GitHub - School of Net (Free)](https://www.schoolofnet.com/curso/git/controle-de-versao/git-e-github/)
 * [Git e GitHub para Iniciantes - Udemy (Free)](https://www.udemy.com/course/git-e-github-para-iniciantes/)
 * [Git Guia Prático](https://rogerdudler.github.io/git-guide/index.pt_BR.html)
