@@ -16,8 +16,11 @@ Este material é uma iniciativa independente para auxiliar os alunos, visando fa
 ## Instalação do Ambiente Java + Netbeans
 * [Instalação do Java EE](https://www.oracle.com/java/technologies/javaee-8-sdk-downloads.html) - Pacote necessário para desenvolvimento de aplicações para web com Java - Java Enterprise Edition.
 * [Instalação do Netbeans Versão 8.2](https://netbeans.org/downloads/old/8.2/) - Selecione a opção da coluna **TUDO**.
+* [Instalação do XAMPP 64 bits - Última Versão](https://www.apachefriends.org/pt_br/index.html) - Apache + MySQL + PHP (8.0)
+* [Instalação do XAMPP 32 bits](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/1.8.2/xampp-win32-1.8.2-6-VC9-installer.exe/download) - Apache + MySQL + PHP (5.4)
+
+## Tutorial de Instalação Java + Netbeans
 * [Instalação do Java + Netbeans](https://youtu.be/Qb-LCJYeeXM) - Tutorial no Youtube
-* [Instalação do XAMPP](https://www.apachefriends.org/pt_br/index.html) - Apache + MySQL
 
 ## Links gerais
 * [Compilador Java Online](https://www.onlinegdb.com/) - Desenvolvimento de códigos Java Online (Não substitui o Netbeans)
@@ -28,6 +31,8 @@ Este material é uma iniciativa independente para auxiliar os alunos, visando fa
 + [Medium](https://medium.com/)
 + [Canaltech](https://canaltech.com.br/)
 + [Olhar Digital](https://olhardigital.com.br/)
+
+## Cursos de Certificações Gratuitas
 + [CertiProf](https://certiprof.com/) - Certificações (Scrum e Devops estão gratuitos)
 + [Mackenzie cursos gratuitos](https://www.mackenzie.br/noticias/artigo/n/a/i/mackenzie-disponibiliza-14-cursos-livres-gratuitos-com-certificacao/)
 + [Goal Kicker](https://goalkicker.com/) - Diversos eBooks completos sobre programação (Gratuito)
