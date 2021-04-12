@@ -13,6 +13,11 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <ul>
+            <li><a href="Controller?op=novo">Novo</a></li>
+            <li><a href="Controller?op=pesquisar">Pesquisar</a></li>
+            <li><a href="Controller?op=listar">Listar</a></li>
+        </ul>
         <form action="Controller" method="POST">
             <input type="text" name="ra" placeholder="Digite seu RA"/>
         </form>
