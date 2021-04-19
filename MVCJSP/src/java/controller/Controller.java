@@ -47,37 +47,14 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // quando for clicado no link da index, vai vir para cá
-        // vamos verificar a variável "op"
 
-        // vamos recuperar o valor da variável "op", criando uma variável local
-        String opcao = request.getParameter("op");
+        // criação de um atributo que será utilizado entre as páginas JSP
+        request.setAttribute("mensagem", "Você clicou em Listar");
 
-        switch (opcao) {
-            case "novo":
-                // criação de um atributo que será utilizado entre as páginas JSP
-                request.setAttribute("msg", "Você clicou em Novo");
-
-                // aqui vamos redirecionar para a view correta (cliente)
-                // Dispatcher = despachar ou enviar
-                request.getRequestDispatcher("view_novo.jsp").
-                        forward(request, response);
-
-                break; // session Servlet
-
-            case "pesquisar":
-                // criação de um atributo que será utilizado entre as páginas JSP
-                request.setAttribute("msg", "Você clicou em Pesquisar");
-
-                // aqui vamos redirecionar para a view correta (cliente)
-                // Dispatcher = despachar ou enviar
-                request.getRequestDispatcher("view_mensagem.jsp").
-                        forward(request, response);
-                break;
-
-            case "listar":
-                break;
-        }
+        // aqui vamos redirecionar para a view correta (cliente)
+        // Dispatcher = despachar ou enviar
+        request.getRequestDispatcher("view_mensagem.jsp").
+                forward(request, response);
     }
 
     /**
@@ -91,7 +68,59 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        // essas linhas configuram o código de página 
+        // ou seja, acentos e caracteres especiais
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        // vamos criar o controle para administrar o que está acontecendo
+        // vamos criar uma variável para recuperar qual "opção" o usuário escolheu
+        // esta opção virá dos formulários, conforme a linha abaixo:
+        // <input type="hidden" name="operacao" value="tipo_da_operacao" />
+        String operacao = request.getParameter("operacao");
+
+        // criaremos as opções de operações que vamos usar nesta aplicação
+        // Inserir, Pesquisar, Editar, Atualizar, Excluir e Confirmar Exclusão
+        // vamos usar o switch para selecionar a opção desejada
+        // todas as operações abaixo são referentes a banco de dados
+        switch (operacao) {
+            case "Inserir":
+                System.out.println("Foi clicado em Inserir no formulário");
+                String ra = request.getParameter("ra");
+                String nome = request.getParameter("nome");
+                String curso = request.getParameter("curso");
+                
+                request.setAttribute("mensagem", "Você clicou em Inserir");
+                request.setAttribute("ra", ra);
+                request.setAttribute("nome", nome);
+                request.setAttribute("curso", curso);
+                
+                break;
+            case "Pesquisar":
+                System.out.println("Foi clicado em Pesquisar no formulário");
+                request.setAttribute("mensagem", "Você clicou em Pesquisar");
+                break;
+            case "Editar":
+                System.out.println("Foi clicado em Editar no formulário");
+                request.setAttribute("mensagem", "Você clicou em Editar");
+                break;
+            case "Atualizar":
+                System.out.println("Foi clicado em Atualizar no formulário");
+                request.setAttribute("mensagem", "Você clicou em Atualizar");
+                break;
+            case "Excluir":
+                System.out.println("Foi clicado em Excluir no formulário");
+                request.setAttribute("mensagem", "Você clicou em Excluir");
+                break;
+            case "Confirmar Exclusao":
+                System.out.println("Foi clicado em Confirmar Exclusão no formulário");
+                request.setAttribute("mensagem", "Você clicou em Confirmar Exclusão");
+                break;
+        }
+        // redireciona para a view_mensagem
+        request.getRequestDispatcher("view_mensagem.jsp").
+                forward(request, response);
     }
 
     /**
