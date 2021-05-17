@@ -25,6 +25,18 @@ public class Model implements Serializable {
         this.connection = DBConnection.getInstance().getConnection();
     }
 
+    // Esse método vai servir para: pesquisar, editar e excluir
+    public List<Aluno> pesquisar(Aluno aluno,  String tipo){
+        List<Aluno> alunos = new ArrayList();
+        
+        // 1 - montar as exopressões SQL
+        // 2 - ResultSet
+        // 3 - Montar o while
+        // 4 - Adicionar na lista
+        // 5 - Retornar a lista de alunos
+        return alunos;
+    }
+    
     // Método para listar todos os registros (Menu Listar)
     public List<Aluno> listar() {
         // variável para receber a lista de alunos (registros)
@@ -59,5 +71,48 @@ public class Model implements Serializable {
         } catch (SQLException ex) {
             throw new RuntimeException("Falha ao listar.");
         }
+    }
+
+    // método para inserir um registro no banco
+    public void inserir(Aluno aluno) {
+        try {
+            String sql = "INSERT INTO alunos (ra, nome, curso) VALUES (?,?,?);";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                // atribuir os valores do objeto "Aluno" ao "ps"
+                ps.setString(1, aluno.getRa());
+                ps.setString(2, aluno.getNome());
+                ps.setString(3, aluno.getCurso());
+
+                // executar a inclusão
+                ps.execute();
+                ps.close();
+            }
+            connection.close(); // fecha a conexão com o banco de dados
+            this.statusMessage = "Incluído com sucesso";
+        } catch (SQLException ex) {
+            this.statusMessage = "Falha ao inserir: " + ex.getMessage();
+        }
+    }
+
+    public void excluir(Aluno aluno) {
+        try {
+            String sql = "DELETE FROM alunos WHERE ra = ?;";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, aluno.getRa());
+
+                // executar a inclusão
+                ps.execute();
+                ps.close();
+            }
+            connection.close(); // fecha a conexão com o banco de dados
+            this.statusMessage = "Excluído com sucesso";
+        } catch (SQLException ex) {
+            this.statusMessage = "Falha ao excluir: " + ex.getMessage();
+        }
+    }
+
+    @Override // sobrescrita de método
+    public String toString() {
+        return this.statusMessage;
     }
 }

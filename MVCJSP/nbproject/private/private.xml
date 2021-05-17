@@ -4,7 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Uninove-2021-1/Disciplinas/Arquitetura%20de%20Software/MVCJSP/src/java/controller/Controller.java</file>
-            <file>file:/D:/Uninove-2021-1/Disciplinas/Arquitetura%20de%20Software/MVCJSP/src/java/model/DBConnection.java</file>
+            <file>file:/D:/Uninove-2021-1/Disciplinas/Arquitetura%20de%20Software/MVCJSP/web/view_listar.jsp</file>
+            <file>file:/D:/Uninove-2021-1/Disciplinas/Arquitetura%20de%20Software/MVCJSP/web/view_excluir.jsp</file>
+            <file>file:/D:/Uninove-2021-1/Disciplinas/Arquitetura%20de%20Software/MVCJSP/web/view_cadastrar.jsp</file>
             <file>file:/D:/Uninove-2021-1/Disciplinas/Arquitetura%20de%20Software/MVCJSP/src/java/model/Model.java</file>
         </group>
     </open-files>

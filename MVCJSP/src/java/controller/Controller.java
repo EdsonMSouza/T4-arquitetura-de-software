@@ -102,17 +102,28 @@ public class Controller extends HttpServlet {
         // seleciona a opção armazena em "operacao"
         switch (operacao) {
             case "Inserir":
-                String ra = request.getParameter("ra");
-                String nome = request.getParameter("nome");
-                String curso = request.getParameter("curso");
+                try {
+                    // passar os valores recebidos do formulário para o objeto
+                    aluno.setRa(request.getParameter("ra"));
+                    aluno.setNome(request.getParameter("nome"));
+                    aluno.setCurso(request.getParameter("curso"));
 
-                request.setAttribute("mensagem",
-                        "Você clicou em Inserir");
+                    // chama o model para fazer a operação
+                    Model alunoModel = new Model();
 
-                request.setAttribute("ra", ra);
-                request.setAttribute("nome", nome);
-                request.setAttribute("curso", curso);
+                    // chamar o método de inclusão, passando o objeto "aluno"
+                    alunoModel.inserir(aluno);
 
+                    // composição da mensagem de retorno
+                    request.setAttribute("mensagem", alunoModel.toString());
+
+                } catch (SQLException ex) {
+                    // composição da mensagem de retorno
+                    request.setAttribute("mensagem", ex.getMessage());
+                }
+                // redireciona para a view_mensagem
+                request.getRequestDispatcher("view_mensagem.jsp").
+                        forward(request, response);
                 break;
 
             case "Pesquisar":
@@ -131,8 +142,26 @@ public class Controller extends HttpServlet {
                 break;
 
             case "Excluir":
-                request.setAttribute("mensagem",
-                        "Você clicou em Excluir");
+                try {
+                    // passar os valores recebidos do formulário para o objeto
+                    aluno.setRa(request.getParameter("ra"));
+
+                    // chama o model para fazer a operação
+                    Model alunoModel = new Model();
+
+                    // chamar o método de inclusão, passando o objeto "aluno"
+                    alunoModel.excluir(aluno);
+
+                    // composição da mensagem de retorno
+                    request.setAttribute("mensagem", alunoModel.toString());
+
+                } catch (SQLException ex) {
+                    // composição da mensagem de retorno
+                    request.setAttribute("mensagem", ex.getMessage());
+                }
+                // redireciona para a view_mensagem
+                request.getRequestDispatcher("view_mensagem.jsp").
+                        forward(request, response);
                 break;
 
             case "Confirmar Exclusao":
