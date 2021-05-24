@@ -26,17 +26,64 @@ public class Model implements Serializable {
     }
 
     // Esse método vai servir para: pesquisar, editar e excluir
-    public List<Aluno> pesquisar(Aluno aluno,  String tipo){
+    public List<Aluno> pesquisar(Aluno aluno, String tipo) {
+        // Cria a lista para retornar os dados
         List<Aluno> alunos = new ArrayList();
-        
-        // 1 - montar as exopressões SQL
-        // 2 - ResultSet
-        // 3 - Montar o while
-        // 4 - Adicionar na lista
-        // 5 - Retornar a lista de alunos
-        return alunos;
+
+        // Cria a variável para realizar as consultas
+        PreparedStatement ps = null;
+
+        // Cria a variável para definirmos as consultas
+        String sql = new String();
+
+        try {
+            // 1 - montar as expressões SQL
+            switch (tipo) {
+                case "ra":
+                    sql = "SELECT * FROM alunos WHERE ra = ?;";
+                    ps = connection.prepareStatement(sql);
+                    ps.setString(1, aluno.getRa());
+                    break;
+
+                case "nome":
+                    sql = "SELECT * FROM alunos WHERE nome = ?;";
+                    ps = connection.prepareStatement(sql);
+                    ps.setString(1, aluno.getNome());
+                    break;
+
+                case "curso":
+                    sql = "SELECT * FROM alunos WHERE curso = ? ORDER BY curso, nome ASC;";
+                    ps = connection.prepareStatement(sql);
+                    ps.setString(1, aluno.getCurso());
+                    break;
+            }
+
+            // 2 - ResultSet (pegar os resultados do banco de dados)
+            ResultSet rs = ps.executeQuery();
+            
+            // 3 - Montar o while ( colocar os dados recebidos no objeto Aluno)
+            while(rs.next()){
+                aluno = new Aluno();
+                aluno.setId(rs.getInt("id"));
+                aluno.setRa(rs.getString("ra"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setCurso(rs.getString("curso"));
+                
+                // 4 - Adicionar na lista
+                alunos.add(aluno);
+            }
+            
+            rs.close();
+            ps.close();
+            
+            // 5 - Retornar a lista de alunos
+            return alunos;
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Falha ao pesquisar: " + e.getMessage());
+        }
     }
-    
+
     // Método para listar todos os registros (Menu Listar)
     public List<Aluno> listar() {
         // variável para receber a lista de alunos (registros)

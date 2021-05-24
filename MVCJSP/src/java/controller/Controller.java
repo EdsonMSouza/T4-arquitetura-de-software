@@ -127,13 +127,63 @@ public class Controller extends HttpServlet {
                 break;
 
             case "Pesquisar":
-                request.setAttribute("mensagem",
-                        "Você clicou em Pesquisar");
+                // recupera o valor digitado pelo usuário, a ser procurado
+                String valorDigitado = request.getParameter("valor");
+
+                try {
+                    Model alunoModel = new Model();
+
+                    // verificando quem está chegando, ou seja, o tipo da pesquisa
+                    switch (request.getParameter("tipo")) {
+                        case "ra":
+                            aluno.setRa(valorDigitado);
+                            break;
+
+                        case "nome":
+                            aluno.setNome(valorDigitado);
+                            break;
+
+                        case "curso":
+                            aluno.setCurso(valorDigitado);
+                            break;
+                    }
+
+                    alunosDados = alunoModel.pesquisar(
+                            aluno, request.getParameter("tipo"));
+
+                    //vamos tratar os dados
+                    if (alunosDados.isEmpty()) { // isEmpty() é vazio
+                        request.setAttribute("mensagem", "Não localizado");
+                        request.getRequestDispatcher("view_mensagem.jsp").
+                                forward(request, response);
+                    } else {
+                        request.setAttribute("listaAlunos", alunosDados);
+                        request.getRequestDispatcher("view_listar.jsp").
+                                forward(request, response);
+                    }
+
+                } catch (SQLException e) {
+                    request.setAttribute("mensagem", e.getMessage());
+                    request.getRequestDispatcher("view_mensagem.jsp").
+                            forward(request, response);
+                }
                 break;
 
             case "Editar":
-                request.setAttribute("mensagem",
-                        "Você clicou em Editar");
+                try {
+                    Model alunoModel = new Model();
+                    aluno.setRa(request.getParameter("ra"));
+                    alunoDados = alunoModel.pesquisar(aluno, "ra");
+                    
+                    request.setAttribute("alunoDados", alunoDados);
+                    request.getRequestDispatcher("view_editar.jsp").
+                            forward(request, response);
+
+                } catch (SQLException e) {
+                    request.setAttribute("mensagem", e.getMessage());
+                    request.getRequestDispatcher("view_mensagem.jsp").
+                            forward(request, response);
+                }
                 break;
 
             case "Atualizar":
